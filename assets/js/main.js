@@ -2,19 +2,31 @@ $(document).ready(function () {
     
     var dropDown = $('.dropdown');
     var hoverDrop = $('.with-dropdown');
-
+    var arrow = $('.languages > i')
+    var language = $('.languages')
 
     hoverDrop.mouseenter(function(){
-        var statuDropdown = $(this).next('.dropdown');
-        statuDropdown.show().slide(1);
+
+        hoverDrop.not($(this)).next('.dropdown').hide();
+
+        $(this).next('.dropdown').show();
         
     });
 
-    hoverDrop.mouseleave(function(){
+    dropDown.mouseleave(function(){
 
-        var statuDropdown = $(this).next('.dropdown');
-        statuDropdown.hide().slide(1);
-        
+        hoverDrop.not($(this)).next('.dropdown').hide();
     });
     
+
+    language.mouseenter(function(){
+        arrow.removeClass('fa-angle-down').addClass('fa-angle-up');
+    }); 
+
+
+    language.mouseleave(function(){
+        arrow.removeClass('fa-angle-up').addClass('fa-angle-down');
+    }); 
+
 });
+
